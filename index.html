@@ -200,7 +200,60 @@
     </footer>
 
     <script>
-        // ------------------ إعدادات Firebase ------------------
+
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>دليل الهاتف</title>
+</head>
+<body>
+
+<h1>دليل الهاتف</h1>
+
+<button onclick="activateEditMode()">تفعيل التعديل</button>
+
+<ul id="nameList">
+    <li>أحمد <button class="delete-btn" onclick="deleteItem(this)">حذف</button></li>
+    <li>مريم <button class="delete-btn" onclick="deleteItem(this)">حذف</button></li>
+    <li>يوسف <button class="delete-btn" onclick="deleteItem(this)">حذف</button></li>
+    <li>علي <button class="delete-btn" onclick="deleteItem(this)">حذف</button></li>
+    <li>فاطمة <button class="delete-btn" onclick="deleteItem(this)">حذف</button></li>
+</ul>
+
+<script>
+const SECRET_CODE = "1982";
+let editMode = false;
+
+function activateEditMode() {
+    const input = prompt("أدخل الرقم السري:");
+
+    if (input === SECRET_CODE) {
+        editMode = true;
+        alert("تم تفعيل وضع التعديل");
+        document.querySelectorAll(".delete-btn").forEach(btn => {
+            btn.style.display = "inline";
+        });
+    } else {
+        alert("رقم سري غير صحيح");
+    }
+}
+
+function deleteItem(button) {
+    if (editMode) {
+        button.parentElement.remove();
+    }
+}
+
+// إخفاء أزرار الحذف عند تحميل الصفحة
+window.onload = function() {
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.style.display = "none";
+    });
+}
+</script>
+
+</body>
+</html>      // ------------------ إعدادات Firebase ------------------
         const firebaseConfig = {
             apiKey: "AIzaSyDxNjHSgnpY_zgCcO2BjvDw8bFxba1SGUA",
             authDomain: "company-phonebook-18495.firebaseapp.com",
